@@ -11,14 +11,17 @@ class Deserialize implements java.io.Serializable
 	public static void main(String [] args)
 	{
         try
-		{
+		{	
 			String filename = "memorydump.dmp";
         	FileInputStream file = new FileInputStream(filename);
         	ObjectInputStream in = new ObjectInputStream(file);
-        	Object data = (Object)in.readObject();
+        	Object data = in.readObject();
 			in.close();
 			file.close();
-        	System.out.println(data.cvc);
+        	//System.out.println(data);
+			
+			CreditCardInfo record1 = (CreditCardInfo) data;
+			System.out.println("cardholder name:  " + record1.name);
     	}
 		catch(IOException ex)
 		{
